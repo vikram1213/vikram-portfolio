@@ -1,1 +1,227 @@
-<h1>DEPLOY OK</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vikram Pathak | Software Engineer</title>
+    <meta name="description" content="Vikram Pathak Portfolio - Software Engineer & Full Stack Developer">
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #00f2fe;
+            --secondary: #4facfe;
+            --accent: #f093fb;
+            --bg: #020617;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Basic Setup */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+        body { background-color: var(--bg); color: #fff; overflow-x: hidden; scroll-behavior: smooth; }
+
+        /* --- Canvas Particles --- */
+        #bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; pointer-events: none; }
+
+        /* --- Sidebar Contacts --- */
+        .sidebar {
+            position: fixed; left: 30px; top: 50%; transform: translateY(-50%);
+            display: flex; flex-direction: column; gap: 15px; z-index: 1000;
+        }
+        .sidebar a {
+            width: 50px; height: 50px; background: var(--glass);
+            border: 1px solid var(--border); border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 1.2rem; text-decoration: none;
+            transition: 0.4s; backdrop-filter: blur(10px);
+            opacity: 0; animation: slideIn 0.8s ease forwards;
+        }
+        @keyframes slideIn { from { transform: translateX(-50px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        .sidebar a:hover { 
+            background: var(--primary); color: #000; transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 0 20px var(--primary);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            padding: 20px;
+        }
+        .hero h2 { font-weight: 400; color: var(--secondary); letter-spacing: 4px; font-size: 1.2rem; }
+        .hero h1 { font-size: clamp(3rem, 10vw, 6rem); font-weight: 900; line-height: 1; margin: 10px 0; text-transform: uppercase; }
+        .hero h1 span { background: linear-gradient(to right, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .typing-text { font-size: 1.5rem; color: #94a3b8; height: 30px; font-weight: 300; }
+
+        /* --- Sections --- */
+        section { padding: 80px 10%; max-width: 1200px; margin: 0 auto; }
+        .section-title { font-size: 2.5rem; margin-bottom: 40px; display: flex; align-items: center; gap: 15px; }
+        .section-title::after { content: ""; height: 1px; flex: 1; background: var(--border); }
+        .section-title span { color: var(--primary); font-family: monospace; font-size: 1.2rem; }
+
+        .card {
+            background: var(--glass); border: 1px solid var(--border);
+            padding: 30px; border-radius: 20px; backdrop-filter: blur(10px);
+            transition: 0.4s; margin-bottom: 20px;
+        }
+        .card:hover { border-color: var(--primary); transform: translateY(-5px); background: rgba(255,255,255,0.06); }
+        .card h4 { color: var(--primary); font-size: 1.4rem; margin-bottom: 10px; }
+        .card p { color: #94a3b8; line-height: 1.6; }
+
+        .skills-wrap { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .skill-tag { padding: 6px 15px; background: rgba(0, 242, 254, 0.1); border: 1px solid var(--primary); border-radius: 50px; font-size: 0.85rem; color: var(--primary); }
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 768px) {
+            .sidebar { 
+                position: fixed; bottom: 20px; top: auto; left: 50%; transform: translateX(-50%);
+                flex-direction: row; gap: 15px; width: fit-content;
+            }
+            .sidebar a { width: 45px; height: 45px; }
+            section { padding: 60px 5%; margin-bottom: 80px; }
+            .hero h1 { font-size: 3.5rem; }
+            .section-title { font-size: 1.8rem; }
+        }
+
+        footer { text-align: center; padding: 40px; color: #475569; border-top: 1px solid var(--border); }
+    </style>
+</head>
+<body>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <div class="sidebar">
+        <a href="https://wa.me/918085207207?text=Hi Vikram, I am interested in hiring you" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="tel:+918085207207"><i class="fas fa-phone-alt"></i></a>
+        <a href="mailto:vikrampathakofficial@gmail.com?subject=Hiring Inquiry"><i class="far fa-envelope"></i></a>
+        <a href="https://linkedin.com/in/vikram-pathak03" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/vikram1213" target="_blank"><i class="fab fa-github"></i></a>
+    </div>
+
+    <div class="hero">
+        <h2 data-aos="fade-down">HELLO, I AM</h2>
+        <h1 data-aos="zoom-in">VIKRAM <span>PATHAK</span></h1>
+        <div class="typing-text" id="typewriter"></div>
+    </div>
+
+    <section id="about">
+        <h2 class="section-title" data-aos="fade-right"><span>01.</span> Profile</h2>
+        <div class="card" data-aos="fade-up">
+            <p>Computer Science graduate from <b>VITS College (2024)</b> with a <b>7.24 CGPA</b>. Based in Satna, MP. Dedicated to crafting seamless user experiences and robust backend systems. I specialize in <b>Full Stack Development</b> and building responsive solutions.</p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title" data-aos="fade-right"><span>02.</span> Skill Set</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+            <div class="card" data-aos="flip-up">
+                <h4>Languages</h4>
+                <div class="skills-wrap">
+                    <span class="skill-tag">HTML5 / CSS3</span> <span class="skill-tag">JavaScript (ES6+)</span> <span class="skill-tag">Java</span>
+                </div>
+            </div>
+            <div class="card" data-aos="flip-up" data-aos-delay="100">
+                <h4>Dev Tools</h4>
+                <div class="skills-wrap">
+                    <span class="skill-tag">MySQL</span> <span class="skill-tag">Git & GitHub</span> <span class="skill-tag">VS Code</span> <span class="skill-tag">Responsive Design</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section-title" data-aos="fade-right"><span>03.</span> Experience</h2>
+        <div class="card" data-aos="fade-up">
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 10px;">
+                <h4 style="color: var(--accent);">Web Development Intern</h4>
+                <span>Digital Link | 3 Months</span>
+            </div>
+            <p>Assisted in the end-to-end development of web projects. Fixed critical UI/UX issues and ensured 100% responsiveness across devices.</p>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title" data-aos="fade-right"><span>04.</span> Projects</h2>
+        <div class="card" data-aos="fade-up">
+            <h4>JMD Website - Full Stack</h4>
+            <p>A professional business website with integrated database connectivity. Certified by Digital Link.</p>
+            <div class="skills-wrap">
+                <span class="skill-tag"><i class="fas fa-check-circle"></i> Certified Project</span>
+                <span class="skill-tag">Full Stack</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Satna, Madhya Pradesh | &copy; 2024 Vikram Pathak</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({ duration: 1000, once: true });
+
+        // Typewriter Effect
+        const text = "Full Stack Web Developer | UI/UX Enthusiast | Problem Solver";
+        let i = 0;
+        function type() {
+            if (i < text.length) {
+                document.getElementById("typewriter").innerHTML += text.charAt(i);
+                i++;
+                setTimeout(type, 80);
+            }
+        }
+        window.onload = type;
+
+        // Particle Background System
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1.5;
+                this.speedX = Math.random() * 0.4 - 0.2;
+                this.speedY = Math.random() * 0.4 - 0.2;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0;
+                else if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                else if (this.y < 0) this.y = canvas.height;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(0, 242, 254, 0.4)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 80; i++) particles.push(new Particle());
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+</body>
+</html>
